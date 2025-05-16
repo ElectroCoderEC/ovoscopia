@@ -42,11 +42,32 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+
   </head>
 
   <body>
 
     <style>
+
+
+#graficoPastel{
+    max-width: 100%;
+
+    height: auto !important;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#graficoLineas {
+    max-width: 100%;
+    height: auto !important;
+}
+
 
 .img-diagonal {
   position: absolute;
@@ -358,25 +379,11 @@
                                                 <div class="card user-card ">
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
-                                                           <!--
-                                                             {% if cuentaU %}
- 
-                                                         
-                                                          
-                                                            <div class="col-8">
-                                                                <h1 class="text-c-purple">{{cuentaU}}+</h1>
-                                                            </div>
-   
-                                                            {% else %}
 
-                                                              -->
 
                                                             <div class="col-8">
-                                                                <h1 class="text-c-purple">40</h1>
+                                                                <h1 class="text-c-purple">{{ total_fertil }}</h1>
                                                             </div>
-         <!--
-                                                            {% endif %}-->
-                                                                   
 
                                                             <div class="col-4 text-right">
                                                                 <i class="fa fa-user f-28"></i>
@@ -410,24 +417,9 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             <div class="col-8">
-                                                                        <!--
-                                                                {% if cuentaT %}
-
-                                                                <div class="col-8">
-                                                                    <h1 class="text-c-green">{{cuentaT}}+</h1>
-                                                                </div>
-    
-                                                                {% else %}
-
-                                                                <div class="col-8">
-                                                                    <h1 class="text-c-green">0</h1>
-                                                                </div>
-
-                                                                {% endif %}
-                                                            -->
 
                                                             <div class="col-8">
-                                                                <h1 class="text-c-green">60</h1>
+                                                                <h1 class="text-c-green">{{ total_consumo }}</h1>
                                                             </div>
                                                           
                                                             </div>
@@ -458,26 +450,8 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
 
-                                                                     <!--
-                                                            {% if cuentaP %}
-
-                                                            <div class="col-8">
-                                                                <h1 class="text-c-red">{{cuentaP}}+</h1>
-                                                            </div>
-   
-                                                            {% else %}
-
-                                                            <div class="col-8">
-                                                                <h1 class="text-c-red">0</h1>
-                                                              
-                                                            </div>
-
-                                                            {% endif %}
-                                                        -->
-
-                                                        
                                                         <div class="col-8">
-                                                            <h1 class="text-c-red">28</h1>
+                                                            <h1 class="text-c-red">{{ total_malo }}</h1>
                                                           
                                                         </div>
                                                             
@@ -506,27 +480,8 @@
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
                                                             
-                                                                     <!--
-
-                                                                {% if reportes %}
-
-                                                            <div class="col-8">
-                                                                <h1 class="text-c-blue">{{reportes}}+</h1>
-                                                            </div>
-   
-                                                            {% else %}
-
-                                                            <div class="col-8">
-                                                                <h1 class="text-c-blue">0</h1>
-                                                              
-                                                            </div>
-
-                                                            {% endif %}
-
-                                                        -->
-                                                              
                                                         <div class="col-8">
-                                                            <h1 class="text-viber">128</h1>
+                                                            <h1 class="text-viber">{{ total_registros }}</h1>
                                                           
                                                         </div>
                                                            
@@ -554,67 +509,142 @@
                                             </div>
                                             <!-- task, page, download counter  end -->
     
-                                          
-    
-                                          
                                         </div>
+
+
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 mb-3">
+                                                <div class="card user-card">
+                                                <div class="card-header">
+                                                    <h5>GRÁFICA DE HUEVOS CLASIFICADOS</h5>
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <canvas  id="graficoPastel" ></canvas>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6 mb-3">
+                                                <div class="card user-card">
+                                                <div class="card-header">
+                                                    <h5>FECHAS DE CLASIFICACIÓN</h5>
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <canvas id="graficoLineas"></canvas>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
                                     </div>
                                     <!-- Page-body end -->
                                 </div>
                                 <div id="styleSelector"> </div>
                             </div>
+
+                          
+
+                           
+
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
+
     
     <!-- Required Jquery -->
+
+
+<script>
+    // Gráfico de Pastel
+    Chart.register(ChartDataLabels);  // Necesario si usas Chart.js v3+
+
+
+     // Obtener los totales enviados desde Python
+    const totalMALO = {{ total_malo }};
+    const totalCONSUMO = {{ total_consumo }};
+    const totalFERTIL = {{ total_fertil }};
+
+const configPastel = {
+    type: 'pie',
+    data: {
+        labels: ['MALO',  'CONSUMO','FÉRTIL'],
+        datasets: [{
+            data: [totalMALO,  totalCONSUMO,totalFERTIL], // Reemplaza con tus datos reales
+            backgroundColor: ['#ff4d4d', '#11c15b', '#536dfe',]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                    display: true,
+                    text: 'Distribución por Estado'
+                },
+            datalabels: {
+                formatter: (value, ctx) => {
+                  
+
+                    let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                    let percentage = (value * 100 / sum).toFixed(1) + "%";
+                    return percentage;
+                },
+                color: '#fff',
+                font: {
+                    weight: 'bold',
+                    size: 25
+                }
+            },
+            legend: {
+                position: 'top'
+            }
+            
+        }
+    },
+    plugins: [ChartDataLabels]
+};
+
+const ctx = document.getElementById("graficoPastel").getContext("2d");
+new Chart(ctx, configPastel);
+
+    // Preparar datos para gráfico de líneas
+    const fechasData = {{ fechas_agrupadas|tojson }};
+    const fechas = fechasData.map(item => item['Fecha Clasificacion']);
+    const estados = ['MALO', 'CONSUMO', 'FÉRTIL'];
+
+    const datasets = estados.map((estado, index) => ({
+        label: estado,
+        data: fechasData.map(item => item[estado] || 0),
+        borderColor: ['#ff4d4d', '#11c15b', '#536dfe'][index],
+        fill: false,
+        tension: 0.1
+    }));
+
+    // Gráfico de Líneas
+    const lineas = new Chart(document.getElementById('graficoLineas'), {
+        type: 'line',
+        data: {
+            labels: fechas,
+            datasets: datasets
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Evolución por Fecha de Clasificación'
+                }
+            },
+            scales: {
+                x: { title: { display: true, text: 'Fecha' }},
+                y: { title: { display: true, text: 'Cantidad' }, beginAtZero: true }
+            }
+        }
+    });
+</script>
+
+
     <script type="text/javascript" src="assets/js/jquery/jquery.min.js" ></script>
     <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js" ></script>
     <script type="text/javascript" src="assets/js/popper.js/popper.min.js" ></script>

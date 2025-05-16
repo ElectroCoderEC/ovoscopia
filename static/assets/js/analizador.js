@@ -20,8 +20,81 @@ $(document).ready(function () {
 			});
 
 		});
-
 	}
+
+	updateValue('lower-h', 'lower-h-val');
+	updateValue('lower-s', 'lower-s-val');
+	updateValue('lower-v', 'lower-v-val');
+	updateValue('upper-h', 'upper-h-val');
+	updateValue('upper-s', 'upper-s-val');
+	updateValue('upper-v', 'upper-s-val');
+
+	updateValue('lower-h-2', "lower-h-2-val");
+	updateValue('lower-s-2', "lower-s-2-val");
+	updateValue('lower-v-2', "lower-v-2-val");
+	updateValue('upper-h-2', "upper-h-2-val");
+	updateValue('upper-s-2', "upper-s-2-val");
+	updateValue('upper-v-2', "upper-v-2-val");
+
+	updateValue('lower-h-3', "lower-h-3-val");
+	updateValue('lower-s-3', "lower-s-3-val");
+	updateValue('lower-v-3', "lower-v-3-val");
+	updateValue('upper-h-3', "upper-h-3-val");
+	updateValue('upper-s-3', "upper-s-3-val");
+	updateValue('upper-v-3', "upper-v-3-val");
+
+
+	$('#btnDefault').click(function () {
+
+		$('#lower-h').val(0)
+		$('#upper-h').val(14)
+		$('#lower-s').val(22)
+		$('#upper-s').val(255)
+		$('#lower-v').val(21)
+		$('#upper-v').val(255)
+
+		$('#lower-h-2').val(0)
+		$('#upper-h-2').val(56)
+		$('#lower-s-2').val(0)
+		$('#upper-s-2').val(200)
+		$('#lower-v-2').val(200)
+		$('#upper-v-2').val(255)
+
+		$('#lower-h-3').val(0)
+		$('#upper-h-3').val(37)
+		$('#lower-s-3').val(85)
+		$('#upper-s-3').val(255)
+		$('#lower-v-3').val(146)
+		$('#upper-v-3').val(255)
+
+
+
+
+		defaultValue('lower-h', 'lower-h-val');
+		defaultValue('lower-s', 'lower-s-val');
+		defaultValue('lower-v', 'lower-v-val');
+		defaultValue('upper-h', 'upper-h-val');
+		defaultValue('upper-s', 'upper-s-val');
+		defaultValue('upper-v', 'upper-s-val');
+
+		defaultValue('lower-h-2', "lower-h-2-val");
+		defaultValue('lower-s-2', "lower-s-2-val");
+		defaultValue('lower-v-2', "lower-v-2-val");
+		defaultValue('upper-h-2', "upper-h-2-val");
+		defaultValue('upper-s-2', "upper-s-2-val");
+		defaultValue('upper-v-2', "upper-v-2-val");
+
+		defaultValue('lower-h-3', "lower-h-3-val");
+		defaultValue('lower-s-3', "lower-s-3-val");
+		defaultValue('lower-v-3', "lower-v-3-val");
+		defaultValue('upper-h-3', "upper-h-3-val");
+		defaultValue('upper-s-3', "upper-s-3-val");
+		defaultValue('upper-v-3', "upper-v-3-val");
+
+
+		alert("Valores Reseteados");
+
+	});
 
 
 	function defaultValue(inputId, labelId) {
@@ -41,102 +114,6 @@ $(document).ready(function () {
 
 	}
 
-	updateValue('lower-h', 'lower-h-val');
-	updateValue('lower-s', 'lower-s-val');
-	updateValue('lower-v', 'lower-v-val');
-	updateValue('upper-h', 'upper-h-val');
-	updateValue('upper-s', 'upper-s-val');
-	updateValue('upper-v', 'upper-v-val');
-
-	updateValue('lower-h-dedos', 'lower-h-dedos-val');
-	updateValue('lower-s-dedos', 'lower-s-dedos-val');
-	updateValue('lower-v-dedos', 'lower-v-dedos-val');
-	updateValue('upper-h-dedos', 'upper-h-dedos-val');
-	updateValue('upper-s-dedos', 'upper-s-dedos-val');
-	updateValue('upper-v-dedos', 'upper-v-dedos-val');
-
-	$('#btnDefault').click(function () {
-
-
-		/*
-		$('#lower-h').val(30)
-		$('#lower-s').val(16)
-		$('#lower-v').val(103)
-
-		$('#upper-h').val(94)
-		$('#upper-s').val(255)
-		$('#upper-v').val(255)
-
-		$('#lower-h-dedos').val(40)
-		$('#lower-s-dedos').val(16)
-		$('#lower-v-dedos').val(87)
-
-		$('#upper-h-dedos').val(100)
-		$('#upper-s-dedos').val(255)
-		$('#upper-v-dedos').val(255)
-		*/
-
-		$.ajax({
-			url: '/get_hsv',
-			type: 'POST',
-			contentType: 'application/json',
-			data: JSON.stringify({
-				"lower-h": $('#lower-h').val(),
-				"lower-s": $('#lower-s').val(),
-				"lower-v": $('#lower-v').val(),
-				"upper-h": $('#upper-h').val(),
-				"upper-s": $('#upper-s').val(),
-				"upper-v": $('#upper-v').val(),
-				"lower-h-dedos": $('#lower-h-dedos').val(),
-				"lower-s-dedos": $('#lower-s-dedos').val(),
-				"lower-v-dedos": $('#lower-v-dedos').val(),
-				"upper-h-dedos": $('#upper-h-dedos').val(),
-				"upper-s-dedos": $('#upper-s-dedos').val(),
-				"upper-v-dedos": $('#upper-v-dedos').val()
-
-			}),
-			success: function (response) {
-
-				if (response.status == "success") {
-
-
-				}
-				else {
-					Swal.fire(
-						'Error',
-						'Hubo un problema al obtener de configuracion los valores: ' + response.message,
-						'error'
-					);
-				}
-
-
-
-			},
-			error: function (xhr, status, error) {
-				Swal.fire(
-					'Error',
-					'Hubo un problema al actualizar los valores: ' + error,
-					'error'
-				);
-			}
-		});
-
-
-		defaultValue("lower-h", 'lower-h-val')
-		defaultValue("lower-s", 'lower-s-val')
-		defaultValue("lower-v", 'lower-v-val')
-		defaultValue("upper-h", 'upper-h-val')
-		defaultValue("upper-s", 'upper-s-val')
-		defaultValue("upper-v", 'upper-v-val')
-
-		defaultValue("lower-h-dedos", 'lower-h-dedos-val')
-		defaultValue("lower-s-dedos", 'lower-s-dedos-val')
-		defaultValue("lower-v-dedos", 'lower-v-dedos-val')
-		defaultValue("upper-h-dedos", 'upper-h-dedos-val')
-		defaultValue("upper-s-dedos", 'upper-s-dedos-val')
-		defaultValue("upper-v-dedos", 'upper-v-dedos-val')
-	});
-
 
 	$('#btnSaveValues').click(function () {
 
@@ -151,76 +128,20 @@ $(document).ready(function () {
 			confirmButtonText: 'Si, guardar!'
 		}).then(function (result) {
 
-			if (result.value) {
-
-				$.ajax({
-					url: '/save_hsv',
-					type: 'POST',
-					contentType: 'application/json',
-					data: JSON.stringify({
-						"lower-h": $('#lower-h').val(),
-						"lower-s": $('#lower-s').val(),
-						"lower-v": $('#lower-v').val(),
-						"upper-h": $('#upper-h').val(),
-						"upper-s": $('#upper-s').val(),
-						"upper-v": $('#upper-v').val(),
-						"lower-h-dedos": $('#lower-h-dedos').val(),
-						"lower-s-dedos": $('#lower-s-dedos').val(),
-						"lower-v-dedos": $('#lower-v-dedos').val(),
-						"upper-h-dedos": $('#upper-h-dedos').val(),
-						"upper-s-dedos": $('#upper-s-dedos').val(),
-						"upper-v-dedos": $('#upper-v-dedos').val()
-
-					}),
-					success: function (response) {
-
-						if (response.status == "success") {
-							Swal.fire(
-								'¡Guardado!',
-								'Los nuevos valores HSV fueron actualizados',
-								'success'
-							).then(() => {
-								// Recargar la página para actualizar la lista de usuarios
-								//location.reload();
-							});
-						}
-						else {
-							Swal.fire(
-								'Error',
-								'Hubo un problema al actualizar los valores: ' + response.message,
-								'error'
-							);
-						}
-
-
-
-					},
-					error: function (xhr, status, error) {
-						Swal.fire(
-							'Error',
-							'Hubo un problema al actualizar los valores: ' + error,
-							'error'
-						);
-					}
-				});
-
-			}
-
+			Swal.fire(
+				'¡Guardado!',
+				'Los nuevos valores HSV fueron actualizados',
+				'success'
+			).then(() => {
+				// Recargar la página para actualizar la lista de usuarios
+				//location.reload();
+			});
 		})
-
-
 	});
 
 
-	function isEmpty(str) {
-		return (!str || str.length === 0);
-	}
-
-
-
-
 	var txtTipo = "";
-	var txtEstado = "";
+	var txtEstado = "MALO";
 	var txtVencimiento = "";
 
 
@@ -613,12 +534,14 @@ $(document).ready(function () {
 			$('#contenedorControles').hide();
 			$('#contenedorPies').hide();
 			$('#contenedorBotones').hide();
+			$('#contenedorResultado').hide();
 		}
 
 		else {
 			$('#contenedorControles').show();
 			$('#contenedorPies').show();
 			$('#contenedorBotones').show();
+			$('#contenedorResultado').show();
 		}
 
 		$.ajax({

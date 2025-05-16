@@ -184,14 +184,40 @@ def portada():
 
 @app.route("/dashboard")
 def dashboard():
-
-    print("mostrar dashboard")
-
     if video.state():
-        print("El estado es: ", video.state())
         video.stop()
 
-    return render_template("dashboard.html")
+    total_malo = total_consumo = total_fertil = total_registros = 0
+    fechas_agrupadas = []
+
+    if os.path.exists(EXCEL_FILE):
+        df = pd.read_excel(EXCEL_FILE, sheet_name="Ovoscopia")
+        df.dropna(subset=["Estado", "Fecha Clasificacion"], inplace=True)
+
+        # Totales por estado
+        estado_counts = df["Estado"].value_counts()
+        total_malo = estado_counts.get("MALO", 0)
+        total_consumo = estado_counts.get("CONSUMO", 0)
+        total_fertil = estado_counts.get("FÉRTIL", 0)
+        total_registros = len(df)
+
+        # Agrupar por fecha y contar por estado
+        df["Fecha Clasificacion"] = pd.to_datetime(df["Fecha Clasificacion"])
+        df["Fecha Clasificacion"] = df["Fecha Clasificacion"].dt.strftime("%Y-%m-%d")
+
+        grouped = (
+            df.groupby(["Fecha Clasificacion", "Estado"]).size().unstack(fill_value=0)
+        )
+        fechas_agrupadas = grouped.reset_index().to_dict(orient="records")
+
+    return render_template(
+        "dashboard.html",
+        total_malo=total_malo,
+        total_consumo=total_consumo,
+        total_fertil=total_fertil,
+        total_registros=total_registros,
+        fechas_agrupadas=fechas_agrupadas,
+    )
 
 
 @app.route("/registros")
@@ -213,6 +239,18 @@ def calibracion():
     return render_template("calibracion.html", variables=variables)
 
 
+@app.route("/set_controles", methods=["POST"])
+def set_controles():
+    data = request.get_json()
+    tipo_control = data.get("control")
+    valor_control = data.get("valor")
+
+    video.set_hsv_val(tipo_control, valor_control)
+
+    # print("TIPOOOO: " + tipo_control + "  VALOR:" + valor_control)
+    return jsonify({"message": "TIPOOOO: " + tipo_control + "  VALOR:" + valor_control})
+
+
 @app.route("/analyzer", methods=["GET"])
 def analyzer():
 
@@ -221,6 +259,15 @@ def analyzer():
         video.stop()
 
     return render_template("analizer.html", usuario=0, variables=0)
+
+
+@app.route("/set_mode", methods=["POST"])
+def set_mode():
+    data = request.get_json()
+    camera_mode = data.get("mode")
+    video.set_mode(camera_mode)
+    # print("EL DATO QUE LLEGA ES: ", camera_mode)
+    return jsonify({"message": "Mode set to " + camera_mode})
 
 
 def video_stream(camera):

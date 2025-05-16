@@ -1,29 +1,18 @@
 import cv2
 import numpy as np
 from datetime import datetime, timedelta
-import serial
-import threading
 import time
-import serial.tools.list_ports
 
 from controller import Microcontroller
 
-# from microcontroller import Controller
 
-from werkzeug.serving import run_simple
-import os
-
-
-# Registrar la función que se ejecutará al cerrar
-
+TIEMPO_ANALISIS = 3
 # === CONFIGURACIÓN SERIAL ===
 PUERTO_COM = "COM4"
 BAUDRATE = 9600
 TIEMPO_ESPERA_DATOS = 3
 
 esp32 = Microcontroller(port=PUERTO_COM, baudrate=BAUDRATE)
-# esp32 = Controller()
-# esp32.start()
 
 PROCESAR = False
 una = False
@@ -35,9 +24,6 @@ ovo = 0
 ESTADO = ""
 contflase = 0
 contflase2 = 0
-# Crear un hilo para la reproducción de audio
-# audio_thread = threading.Thread(target=play_audio1)
-# audio_thread.start()
 
 PORC1 = "---"
 PORC2 = "---"
@@ -83,8 +69,6 @@ def mostrar_mensaje_sin_camara():
 
 
 # === DETECCIÓN CON CÁMARA ===
-
-
 def draw_rounded_rectangle(img, top_left, bottom_right, color, thickness, radius):
     cv2.rectangle(
         img,
@@ -243,6 +227,7 @@ def procesar_contornos(frame, contornos, tipo, estado):
 
 def procesamiento(
     img,
+    camera_mode,
     lower_h,
     lower_s,
     lower_v,
@@ -263,12 +248,12 @@ def procesamiento(
     upper_v3,
 ):
 
-    global vencimiento, una, una2, ovo, ESTADO, contflase2, contflase, esp32, inicio, PROCESAR, capturar, reproducir, colocarBien, check, xLeft, yLeft, xRight, yRight, imagen_normal, imagen_mask, imagen_pseudo, imagen_procesada
+    global TIEMPO_ANALISIS, vencimiento, una, una2, ovo, ESTADO, contflase2, contflase, esp32, inicio, PROCESAR, capturar, reproducir, colocarBien, check, xLeft, yLeft, xRight, yRight, imagen_normal, imagen_mask, imagen_pseudo, imagen_procesada
     # DESCOMENTAR PARA Q FUNCIONE CAMARA
 
     # DESCOMENTAR PARA Q FUNCIONE IMAGEN
     # frame = frame_original.copy()
-
+    mascara_ovo_erosionada = 0
     try:
 
         PROCESAR = esp32.getProcesar()
@@ -283,49 +268,12 @@ def procesamiento(
         area_fisuras_historial = []
         MAX_HISTORIAL = 5
 
-        # cv2.namedWindow("Sliders HSV", cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow("Sliders HSV", 640, 300)
-
-        # cv2.namedWindow("Sliders HSV 2", cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow("Sliders HSV 2", 640, 300)
-
-        # cv2.namedWindow("Defectos", cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow("Defectos", 500, 200)
-
         def nothing(x):
             pass
 
-        """
-        
-        # Rango para huevo normal
-        cv2.createTrackbar("H Min", "Sliders HSV", 0, 179, nothing)
-        cv2.createTrackbar("H Max", "Sliders HSV", 14, 179, nothing)
-        cv2.createTrackbar("S Min", "Sliders HSV", 22, 255, nothing)
-        cv2.createTrackbar("S Max", "Sliders HSV", 255, 255, nothing)
-        cv2.createTrackbar("V Min", "Sliders HSV", 21, 255, nothing)  # 16
-        cv2.createTrackbar("V Max", "Sliders HSV", 255, 255, nothing)
-
-        # Rango para huevo blanco
-        cv2.createTrackbar("H Min", "Sliders HSV 2", 0, 179, nothing)
-        cv2.createTrackbar("H Max", "Sliders HSV 2", 56, 179, nothing)
-        cv2.createTrackbar("S Min", "Sliders HSV 2", 0, 255, nothing)
-        cv2.createTrackbar("S Max", "Sliders HSV 2", 200, 255, nothing)
-        cv2.createTrackbar("V Min", "Sliders HSV 2", 200, 255, nothing)
-        cv2.createTrackbar("V Max", "Sliders HSV 2", 255, 255, nothing)
-
-        # Rango para color rojo defectos
-        cv2.createTrackbar("H Min Red", "Defectos", 0, 179, nothing)
-        cv2.createTrackbar("H Max Red", "Defectos", 37, 255, nothing)
-        cv2.createTrackbar("S Min Red", "Defectos", 85, 255, nothing)
-        cv2.createTrackbar("S Max Red", "Defectos", 255, 255, nothing)
-        cv2.createTrackbar("V Min Red", "Defectos", 146, 255, nothing)
-        cv2.createTrackbar("V Max Red", "Defectos", 255, 255, nothing)
-        """
-
-        # frame_original = cv2.imread("embrion.jpg")
-        # print(serial_port)
-
-        frame_original = cv2.resize(img, (640, 480))
+        img = cv2.resize(img, (640, 480))
+        # frame_original = cv2.resize(img, (640, 480))
+        frame_original = img
         if PROCESAR:
             # Guarda el tiempo inicial
             if una == False:
@@ -339,7 +287,7 @@ def procesamiento(
 
             # Cuando pasen 5 segundos, termina el ciclo
             if (
-                tiempo_transcurrido >= 3
+                tiempo_transcurrido >= TIEMPO_ANALISIS
             ):  # tiempo para ver estado de ovo con vision artificial
                 if una2 == False:
                     print("✅ ¡Tiempo completado!")
@@ -712,7 +660,14 @@ def procesamiento(
         # cv2.imshow("Resultado Final", result)
         # cv2.imshow("Detección Final", frame_final)
 
-        return frame_final, TIPO, ESTADO, vencimiento
+        if camera_mode == "procesada":
+            return frame_final, TIPO, ESTADO, vencimiento
+
+        elif camera_mode == "mascara":
+            return mascara_ovo_erosionada, TIPO, ESTADO, vencimiento
+
+        elif camera_mode == "normal":
+            return img, TIPO, ESTADO, vencimiento
 
     # cv2.imshow('Imagen Pseudo Color', pseudo_color)
     except Exception as e:
@@ -733,40 +688,32 @@ def procesamiento(
 class VideoCamera(object):
     def __init__(self):
 
-        self.camera_mode = ""
+        self.camera_mode = "procesada"
         self.stateCam = False
 
+        # Rango para huevo normal
         self.lower_h = 0
-        self.lower_s = 22
-        self.lower_v = 21
         self.upper_h = 14
+        self.lower_s = 22
         self.upper_s = 255
+        self.lower_v = 21
         self.upper_v = 255
 
+        # Rango para huevo blanco
         self.lower_h2 = 0
-        self.lower_s2 = 56
-        self.lower_v2 = 0
-        self.upper_h2 = 200
+        self.upper_h2 = 56
+        self.lower_s2 = 0
         self.upper_s2 = 200
+        self.lower_v2 = 200
         self.upper_v2 = 255
 
-        # PARA DEFECTOS
-
+        # Rango para color rojo defectos
         self.lower_h3 = 0
-        self.lower_s3 = 85
-        self.lower_v3 = 146
         self.upper_h3 = 37
+        self.lower_s3 = 85
         self.upper_s3 = 255
+        self.lower_v3 = 146
         self.upper_v3 = 255
-
-        # self.cap = None
-
-        # hilo_serial = threading.Thread(target=self.conectar_serial)
-        # hilo_serial.start()
-        # ⏳ Esperamos a que serial_port esté listo
-        # while serial_port is None:
-        #    print("⌛ Esperando conexión serial...")
-        #    time.sleep(0.5)
 
     def start(self):
 
@@ -812,18 +759,30 @@ class VideoCamera(object):
             self.upper_s = valor
         elif tipo == "upper-v":
             self.upper_v = valor
-        elif tipo == "lower-h-dedos":
+        elif tipo == "lower-h-2":
             self.lower_h2 = valor
-        elif tipo == "lower-s-dedos":
+        elif tipo == "lower-s-2":
             self.lower_s2 = valor
-        elif tipo == "lower-v-dedos":
+        elif tipo == "lower-v-2":
             self.lower_v2 = valor
-        elif tipo == "upper-h-dedos":
+        elif tipo == "upper-h-2":
             self.upper_h2 = valor
-        elif tipo == "upper-s-dedos":
+        elif tipo == "upper-s-2":
             self.upper_s2 = valor
-        elif tipo == "upper-v-dedos":
+        elif tipo == "upper-v-2":
             self.upper_v2 = valor
+        elif tipo == "lower-h-3":
+            self.lower_h3 = valor
+        elif tipo == "lower-s-3":
+            self.lower_s3 = valor
+        elif tipo == "lower-v-3":
+            self.lower_v3 = valor
+        elif tipo == "upper-h-3":
+            self.upper_h3 = valor
+        elif tipo == "upper-s-3":
+            self.upper_s3 = valor
+        elif tipo == "upper-v-3":
+            self.upper_v3 = valor
 
     def __del__(self):
 
@@ -844,6 +803,12 @@ class VideoCamera(object):
             self.upper_h2,
             self.upper_s2,
             self.upper_v2,
+            self.lower_h3,
+            self.lower_s3,
+            self.lower_v3,
+            self.upper_h3,
+            self.upper_s3,
+            self.upper_v3,
         )
 
     def set_Capturar(self):
@@ -883,6 +848,7 @@ class VideoCamera(object):
         else:
             frame2, TIPO, ESTADO, VENCIMIENTO = procesamiento(
                 frame,
+                self.camera_mode,
                 self.lower_h,
                 self.lower_s,
                 self.lower_v,

@@ -355,7 +355,7 @@
                                                                 <div class="col-md-6" >
                                                                    
                                                                     <h5 >
-                                                                        <select name="select" class="tipoVideo btn-block" >
+                                                                        <select name="select" class="tipoVideo form-select" >
                                                                             <option value="procesada">Imagen Procesada</option>  
                                                                             <option value="mascara">Imagen Máscara</option>
                                                                             
@@ -482,7 +482,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="card user-card">
+                                                <div class="card user-card" id="contenedorResultado">
                                                     <div class="card-header">
                                                         <h5 id="txtResultado">RESULTADO</h5>
                                                     </div>
@@ -582,7 +582,6 @@
                                 console.log(response.message);
                             }
                         });
-
                     }
 
 
@@ -594,13 +593,13 @@
                     $('#upper-s').val("{{variable[5]}}");
                     $('#upper-v').val("{{variable[6]}}");
 
-                    $('#lower-h-dedos').val("{{variable[7]}}");
-                    $('#lower-s-dedos').val("{{variable[8]}}");
-                    $('#lower-v-dedos').val("{{variable[9]}}");
+                    $('#lower-h-2').val("{{variable[7]}}");
+                    $('#lower-s-2').val("{{variable[8]}}");
+                    $('#lower-v-2').val("{{variable[9]}}");
 
-                    $('#upper-h-dedos').val("{{variable[10]}}");
-                    $('#upper-s-dedos').val("{{variable[11]}}");
-                    $('#upper-v-dedos').val("{{variable[12]}}");
+                    $('#upper-h-2').val("{{variable[10]}}");
+                    $('#upper-s-2').val("{{variable[11]}}");
+                    $('#upper-v-2').val("{{variable[12]}}");
 
                     defaultValue("lower-h", 'lower-h-val');
                     defaultValue("lower-s", 'lower-s-val');
@@ -621,50 +620,7 @@
         {% endfor %}
     {% endif %}
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
+
     
     <!-- Required Jquery -->
     <script type="text/javascript" src="{{url_for('static', filename='assets/js/jquery/jquery.min.js')}}" ></script>

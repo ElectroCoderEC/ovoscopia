@@ -355,7 +355,7 @@
                                                                         <select name="select" class="tipoVideo btn-block" >
                                                                             <option value="procesada">Imagen Procesada</option>  
                                                                             <option value="mascara">Imagen Máscara</option>
-                                                                            <option value="pseudo">Imagen PseudoColor</option>
+                                                                    
                                                                             <option value="normal">Imagen Normal</option>
                                                                         </select>
                                                                     </h5>
@@ -382,21 +382,21 @@
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
                                                                         <label for="lower-h">Lower H: <span id="lower-h-val">30</span></label>
-                                                                        <input type="range" id="lower-h" name="lower_h" min="0" max="179" value="30" class="form-control">
+                                                                        <input type="range" id="lower-h" name="lower_h" min="0" max="179" value="0" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
                                                                         <label for="lower-s">Lower S: <span id="lower-s-val">16</span></label>
-                                                                        <input type="range" id="lower-s" name="lower_s" min="0" max="255" value="16" class="form-control">
+                                                                        <input type="range" id="lower-s" name="lower_s" min="0" max="255" value="22" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
                                                                         <label for="lower-v">Lower V: <span id="lower-v-val">103</span></label>
-                                                                        <input type="range" id="lower-v" name="lower_v" min="0" max="255" value="103" class="form-control">
+                                                                        <input type="range" id="lower-v" name="lower_v" min="0" max="255" value="21" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
                                                                         <label for="upper-h">Upper H: <span id="upper-h-val">94</span></label>
-                                                                        <input type="range" id="upper-h" name="upper_h" min="0" max="179" value="94" class="form-control">
+                                                                        <input type="range" id="upper-h" name="upper_h" min="0" max="179" value="14" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
                                                                         <label for="upper-s">Upper S: <span id="upper-s-val">255</span></label>
@@ -410,54 +410,40 @@
                                                             </div>
                                                           <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
                                                         </form>
-
-                                                        
-
-                                                       
-
-                                                     
-
-
                                                     </div>
-        
                                                 </div>
 
-
-
                                                 <div class="card user-card" id="contenedorBotones">
-
                                                     <div class="card-body  text-center">
-
-                                                 
                                                         <h3>Huevo Blanco</h3>
-                                                        <form id="hsv-dedos-form" method="POST">
+                                                        <form id="hsv-2-form" method="POST">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
-                                                                        <label for="lower-h-dedos">Lower H: <span id="lower-h-dedos-val">40</span></label>
-                                                                        <input type="range" id="lower-h-dedos" name="lower_h_dedos" min="0" max="179" value="40" class="form-control">
+                                                                        <label for="lower-h-2">Lower H: <span id="lower-h-2-val">40</span></label>
+                                                                        <input type="range" id="lower-h-2" name="lower_h_2" min="0" max="179" value="0" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="lower-s-dedos">Lower S: <span id="lower-s-dedos-val">16</span></label>
-                                                                        <input type="range" id="lower-s-dedos" name="lower_s_dedos" min="0" max="255" value="16" class="form-control">
+                                                                        <label for="lower-s-2">Lower S: <span id="lower-s-2-val">16</span></label>
+                                                                        <input type="range" id="lower-s-2" name="lower_s_2" min="0" max="255" value="0" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="lower-v-dedos">Lower V: <span id="lower-v-dedos-val">87</span></label>
-                                                                        <input type="range" id="lower-v-dedos" name="lower_v_dedos" min="0" max="255" value="87" class="form-control">
+                                                                        <label for="lower-v-2">Lower V: <span id="lower-v-2-val">87</span></label>
+                                                                        <input type="range" id="lower-v-2" name="lower_v_2" min="0" max="255" value="200" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
-                                                                        <label for="upper-h-dedos">Upper H: <span id="upper-h-dedos-val">100</span></label>
-                                                                        <input type="range" id="upper-h-dedos" name="upper_h_dedos" min="0" max="179" value="100" class="form-control">
+                                                                        <label for="upper-h-2">Upper H: <span id="upper-h-2-val">100</span></label>
+                                                                        <input type="range" id="upper-h-2" name="upper_h_2" min="0" max="179" value="56" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="upper-s-dedos">Upper S: <span id="upper-s-dedos-val">255</span></label>
-                                                                        <input type="range" id="upper-s-dedos" name="upper_s_dedos" min="0" max="255" value="255" class="form-control">
+                                                                        <label for="upper-s-2">Upper S: <span id="upper-s-2-val">255</span></label>
+                                                                        <input type="range" id="upper-s-2" name="upper_s_2" min="0" max="255" value="200" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="upper-v-dedos">Upper V: <span id="upper-v-dedos-val">255</span></label>
-                                                                        <input type="range" id="upper-v-dedos" name="upper_v_dedos" min="0" max="255" value="255" class="form-control">
+                                                                        <label for="upper-v-2">Upper V: <span id="upper-v-2-val">255</span></label>
+                                                                        <input type="range" id="upper-v-2" name="upper_v_2" min="0" max="255" value="255" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -477,42 +463,39 @@
                                                     <div class="card-body  text-center">
 
                                                         <h3>Embrión</h3>
-                                                        <form id="hsv-form" method="POST">
+                                                        <form id="hsv-3-form" method="POST">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
-                                                                        <label for="lower-h">Lower H: <span id="lower-h-val">30</span></label>
-                                                                        <input type="range" id="lower-h" name="lower_h" min="0" max="179" value="30" class="form-control">
+                                                                        <label for="lower-h-3">Lower H: <span id="lower-h-3-val">40</span></label>
+                                                                        <input type="range" id="lower-h-3" name="lower_h_3" min="0" max="179" value="0" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="lower-s">Lower S: <span id="lower-s-val">16</span></label>
-                                                                        <input type="range" id="lower-s" name="lower_s" min="0" max="255" value="16" class="form-control">
+                                                                        <label for="lower-s-3">Lower S: <span id="lower-s-2-val">16</span></label>
+                                                                        <input type="range" id="lower-s-3" name="lower_s_2" min="0" max="255" value="85" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="lower-v">Lower V: <span id="lower-v-val">103</span></label>
-                                                                        <input type="range" id="lower-v" name="lower_v" min="0" max="255" value="103" class="form-control">
+                                                                        <label for="lower-v-3">Lower V: <span id="lower-v-2-val">87</span></label>
+                                                                        <input type="range" id="lower-v-3" name="lower_v_2" min="0" max="255" value="146" class="form-control">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="slider-container">
-                                                                        <label for="upper-h">Upper H: <span id="upper-h-val">94</span></label>
-                                                                        <input type="range" id="upper-h" name="upper_h" min="0" max="179" value="94" class="form-control">
+                                                                        <label for="upper-h-3">Upper H: <span id="upper-h-3-val">100</span></label>
+                                                                        <input type="range" id="upper-h-3" name="upper_h_3" min="0" max="179" value="37" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="upper-s">Upper S: <span id="upper-s-val">255</span></label>
-                                                                        <input type="range" id="upper-s" name="upper_s" min="0" max="255" value="255" class="form-control">
+                                                                        <label for="upper-s-3">Upper S: <span id="upper-s-3-val">255</span></label>
+                                                                        <input type="range" id="upper-s-3" name="upper_s_3" min="0" max="255" value="255" class="form-control">
                                                                     </div>
                                                                     <div class="slider-container">
-                                                                        <label for="upper-v">Upper V: <span id="upper-v-val">255</span></label>
-                                                                        <input type="range" id="upper-v" name="upper_v" min="0" max="255" value="255" class="form-control">
+                                                                        <label for="upper-v-3">Upper V: <span id="upper-v-3-val">255</span></label>
+                                                                        <input type="range" id="upper-v-3" name="upper_v_3" min="0" max="255" value="255" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                          <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
+                                                          <!-- <button type="submit" class="btn btn-primary">Submit</button>--> 
                                                         </form>
-
-                                                      
-
 
                                                     </div>
         
@@ -525,48 +508,29 @@
 
                                                         <h3>Controles</h3>
                                                       
-
-                                                        <div class="col-md-12">
-                                                            <button type="button" class="btn waves-effect waves-light btn-primary btn-round" id="btnDefault">
+                                                        <div class="">
+                                                            <button type="button" class="btn waves-effect waves-light btn-primary btn-round col-md-12" id="btnDefault">
                                                                 <i class="fa fa-repeat"></i> Reestablecer Valores
                                                             </button>
                                                         </div>
 
-                                                        <div class="col-md-12">
-                                                            <button type="button " class="btn waves-effect waves-light btn-success btn-round" id="btnSaveValues">
+                                                        <div class="">
+                                                            <button type="button " class="btn waves-effect waves-light btn-success btn-round col-md-12" id="btnSaveValues">
                                                                 <i class="fa fa-check"></i> Guardar Valores
                                                             </button>
                                                         </div>
 
-                                                        <div class="row col-md-12">
+                                                        <div class="">
 
-                                                        
-
-
-                                                            <div class="col-md-12">
-
-                                                                <button type="button" class="btn btn-info btn-round" id="btnDefault">
+                                                         <button type="button" class="btn waves-effect btn btn-info btn-round col-md-12" id="btnDefault">
                                                                     <i class="fa fa-repeat"></i> Lámpara
-                                                                </button>
-
-                                                            </div>
-
-                                                        </div>
-
-                              
-
+                                                         </button>
 
                                                      
-
-                                                      
-                                                     
-                                                    </div>
+                                                         </div>
         
                                                 </div>
                                             </div>
-
-
-                                          
 
                                             <!--  project and team member end -->
                                         </div>
@@ -605,111 +569,6 @@
 });
     </script>
 
-    
-    {% if variables %}
-        {%  for variable in variables %}
-    
-            <script>
-                $(document).ready(function () {
-
-                    function defaultValue(inputId, labelId) {
-
-                        $('#' + labelId).text($('#' + inputId).val());
-
-                        $.ajax({
-                            url: '/set_controles',
-                            method: 'POST',
-                            contentType: 'application/json',
-                            data: JSON.stringify({ "control": inputId, "valor": $('#' + inputId).val() }),
-                            success: function (response) {
-                                // Puedes manejar la respuesta si es necesario
-                                console.log(response.message);
-                            }
-                        });
-
-                    }
-
-
-                    $('#lower-h').val("{{variable[1]}}");
-                    $('#lower-s').val("{{variable[2]}}");
-                    $('#lower-v').val("{{variable[3]}}");
-
-                    $('#upper-h').val("{{variable[4]}}");
-                    $('#upper-s').val("{{variable[5]}}");
-                    $('#upper-v').val("{{variable[6]}}");
-
-                    $('#lower-h-dedos').val("{{variable[7]}}");
-                    $('#lower-s-dedos').val("{{variable[8]}}");
-                    $('#lower-v-dedos').val("{{variable[9]}}");
-
-                    $('#upper-h-dedos').val("{{variable[10]}}");
-                    $('#upper-s-dedos').val("{{variable[11]}}");
-                    $('#upper-v-dedos').val("{{variable[12]}}");
-
-                    defaultValue("lower-h", 'lower-h-val');
-                    defaultValue("lower-s", 'lower-s-val');
-                    defaultValue("lower-v", 'lower-v-val');
-                    defaultValue("upper-h", 'upper-h-val');
-                    defaultValue("upper-s", 'upper-s-val');
-                    defaultValue("upper-v", 'upper-v-val');
-
-                    defaultValue("lower-h-dedos", 'lower-h-dedos-val');
-                    defaultValue("lower-s-dedos", 'lower-s-dedos-val');
-                    defaultValue("lower-v-dedos", 'lower-v-dedos-val');
-                    defaultValue("upper-h-dedos", 'upper-h-dedos-val');
-                    defaultValue("upper-s-dedos", 'upper-s-dedos-val');
-                    defaultValue("upper-v-dedos", 'upper-v-dedos-val');
-
-                });
-            </script>
-        {% endfor %}
-    {% endif %}
-
-
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
     
     <!-- Required Jquery -->
     <script type="text/javascript" src="assets/js/jquery/jquery.min.js" ></script>
