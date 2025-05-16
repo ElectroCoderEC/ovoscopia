@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calibración</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Página de Calibración</h1>
+    <img src="{{ url_for('video_feed') }}" width="640" height="480" />
+
+    <br><br>
+    <a href="/"><button>Regresar al menú</button></a>
+
+    <script>
+        var socket = io();
+
+        socket.on('update', function (data) {
+            console.log(data.message);
+        });
+
+        //window.addEventListener("beforeunload", function () {
+        //    socket.disconnect(); // Muy importante para liberar la conexión
+        //});
+
+    </script>
+</body>
+</html>

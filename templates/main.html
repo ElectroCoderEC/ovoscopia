@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIO</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        body::before {
+  content: "";
+  position: absolute;
+  top: 50;
+  left: 50;
+  width: 100%;
+  height: 100%;
+  background: url("assets/images/fondo5.png")
+    no-repeat center;
+  background-size: cover;
+
+      z-index: -1;
+  opacity: 0.7; /* Fondo desenfocado */
+
+}
+        
+        .signup-container {
+            display: flex;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 1000px;
+            max-width: 100%;
+        }
+        
+        .left-side {
+            background: linear-gradient(135deg, #000000 0%, #848484 50%, #000000 100%);
+            color: white;
+            padding: 40px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .right-side {
+            padding: 40px;
+            width: 50%;
+        }
+        
+        .wave-edge {
+            position: absolute;
+            right: -1px;
+            top: 0;
+            height: 100%;
+            width: 50px;
+        }
+
+         /* Overlay negro con gradiente */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+      z-index: -1;
+    }
+        
+        .wave-edge::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 100%;
+            background-color: white;
+            border-radius: 100% 0 0 100%/50%;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo i {
+            background: linear-gradient(135deg, #0066cc 0%, #0052b3 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 20px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-floating {
+            margin-bottom: 20px;
+        }
+        
+        .form-floating input {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        
+        .form-floating label {
+            padding-left: 15px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .checkbox-group a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .btn {
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0066cc 0%, #0052b3 100%);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0052b3 0%, #004299 100%);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+        
+        .btn-outline-secondary {
+            background: transparent;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+                max-width: 100%;
+            }
+            
+            .left-side, .right-side {
+                width: 100%;
+            }
+            
+            .wave-edge {
+                display: none;
+            }
+        }
+
+
+
+        
+        .btnJugar {
+          display: block;
+          margin: 0 auto;
+          animation: animacionJugar 1s infinite ease-in-out;
+        }
+
+
+        @keyframes animacionJugar {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="left-side">
+            <div class="wave-edge"></div>
+            <h1>Bienvenido al</h1>
+            <br>
+            <br>
+            <div class="logo">
+                <img class=""  src="assets/images/icono.png" width="150px" >
+            </div>
+            <br>
+
+
+            <h1 class="fs-1 fw-bold">Sistema de Identificación Automatizada de la Calidad de Huevos Basado en Visión Artificial</h1>
+
+       
+           
+        </div>
+        <div class="right-side d-flex flex-column justify-content-between">
+            <h1 class="fs-1 fw-bold text-center">ESPOCH | Escuela Superior Politécnica de Chimborazo</h1>
+
+            <div class="text-center">
+
+                <img  src="assets/images/logofie.png" width="60%" >
+            </div>
+           
+           
+            
+            <div class="text-center">
+                <button onclick="location.href = 'dashboard'"  type="button" class="btn btn-danger btn-lg p-6 fs-3 btnJugar">INICIAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

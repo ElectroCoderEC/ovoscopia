@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CALIBRACION</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <!-- Meta -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+      <meta name="author" content="codedthemes" />
+      <!-- Favicon icon -->
+      <link rel="icon"  href="assets/images/favicon.ico"  type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet"   href="assets/pages/waves/css/waves.min.css"  type="text/css" media="all">
+      <!-- Required Fremwork -->
+      <link rel="stylesheet" type="text/css"  href="assets/css/bootstrap/css/bootstrap.min.css" >
+      <!-- waves.css -->
+      <link rel="stylesheet"  href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+      <!-- themify icon -->
+      <link rel="stylesheet" type="text/css"  href="assets/icon/themify-icons/themify-icons.css" >
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css"  href="assets/icon/font-awesome/css/font-awesome.min.css">
+      <!-- scrollbar.css -->
+      <link rel="stylesheet" type="text/css"  href="assets/css/jquery.mCustomScrollbar.css" >
+        <!-- am chart export.css -->
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+      <!-- Style.css -->
+      <link rel="stylesheet" href="assets/css/style.css" type="text/css" >
+
+       <!-- jQuery -->
+     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+      <!-- WEBSOCKET SOCKET IO -->
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+      
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+     
+  </head>
+
+  <body>
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+      <div class="loader-track">
+          <div class="preloader-wrapper">
+              <div class="spinner-layer spinner-blue">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+              <div class="spinner-layer spinner-red">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+            
+              <div class="spinner-layer spinner-yellow">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+            
+              <div class="spinner-layer spinner-green">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Pre-loader end -->
+  <div id="pcoded" class="pcoded">
+      <div class="pcoded-overlay-box"></div>
+      <div class="pcoded-container navbar-wrapper">
+          <nav class="navbar header-navbar pcoded-header">
+              <div class="navbar-wrapper">
+                  <div class="navbar-logo">
+                      <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
+                          <i class="ti-menu"></i>
+                      </a>
+                      <div class="mobile-search waves-effect waves-light">
+                          <div class="header-search">
+                              <div class="main-search morphsearch-search">
+                                  <div class="input-group">
+                                      <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                      <input type="text" class="form-control" placeholder="Enter Keyword">
+                                      <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <a href="index.html">
+                          <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+                      </a>
+                      <a class="mobile-options waves-effect waves-light">
+                          <i class="ti-more"></i>
+                      </a>
+                  </div>
+                
+                  <div class="navbar-container container-fluid">
+                      <ul class="nav-left">
+                          <li>
+                              <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                          </li>
+                          <li class="header-search">
+                              <div class="main-search morphsearch-search">
+                                  <div class="input-group">
+                                      <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                      <input type="text" class="form-control">
+                                      <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                                  </div>
+                              </div>
+                          </li>
+                          <li>
+                              <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                                  <i class="ti-fullscreen"></i>
+                              </a>
+                          </li>
+                      </ul>
+                      <ul class="nav-right">
+                          <li class="header-notification">
+                              <a href="#!" class="waves-effect waves-light">
+                                  <i class="ti-bell"></i>
+                                  <span class="badge bg-c-red"></span>
+                              </a>
+                              <ul class="show-notification">
+                                  <li>
+                                      <h6>Notifications</h6>
+                                      <label class="label label-danger">New</label>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <div class="media">
+                                          <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                          <div class="media-body">
+                                              <h5 class="notification-user">Administrador</h5>
+                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                              <span class="notification-time">30 minutes ago</span>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <div class="media">
+                                          <img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                          <div class="media-body">
+                                              <h5 class="notification-user">Joseph William</h5>
+                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                              <span class="notification-time">30 minutes ago</span>
+                                          </div>
+                                      </div>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <div class="media">
+                                          <img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                          <div class="media-body">
+                                              <h5 class="notification-user">Sara Soudein</h5>
+                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                              <span class="notification-time">30 minutes ago</span>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class="user-profile header-notification">
+                              <a href="#!" class="waves-effect waves-light">
+                                  <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                  <span>Administrador</span>
+                                  <i class="ti-angle-down"></i>
+                              </a>
+                              <ul class="show-notification profile-notification">
+                                  <li class="waves-effect waves-light">
+                                      <a href="#!">
+                                          <i class="ti-settings"></i> Settings
+                                      </a>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <a href="user-profile.html">
+                                          <i class="ti-user"></i> Profile
+                                      </a>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <a href="email-inbox.html">
+                                          <i class="ti-email"></i> My Messages
+                                      </a>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <a href="auth-lock-screen.html">
+                                          <i class="ti-lock"></i> Lock Screen
+                                      </a>
+                                  </li>
+                                  <li class="waves-effect waves-light">
+                                      <a href="auth-normal-sign-in.html">
+                                          <i class="ti-layout-sidebar-left"></i> Logout
+                                      </a>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+
+          <div class="pcoded-main-container">
+              <div class="pcoded-wrapper">
+                  <nav class="pcoded-navbar">
+                      <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                      <div class="pcoded-inner-navbar main-menu">
+                          <div class="">
+                              <div class="main-menu-header">
+                                  <img class="img-80 img-radius" src="assets/images/avatar-4.jpg" alt="User-Profile-Image">
+                                  <div class="user-details">
+                                      <span id="more-details">Administrador<i class="fa fa-caret-down"></i></span>
+                                  </div>
+                              </div>
+        
+                              <div class="main-menu-content">
+                                  <ul>
+                                      <li class="more-details">
+                                          <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
+                                          <a href="#!"><i class="ti-settings"></i>Settings</a>
+                                          <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                         
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Menu</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                             
+                            <li>
+                                  <a href="{{url_for('dashboard')}}" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                      <span class="pcoded-mtext" data-i18n="nav.dash.main">Inicio</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                             
+                            </li>
+                          </ul>
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Herramientas</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                        
+                            <li>
+                                <a href="{{url_for('calibracion')}}" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Calibración</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            
+                          
+                            <li>
+                              <a href="{{url_for('analyzer')}}" class="waves-effect waves-dark">
+                                  <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                  <span class="pcoded-mtext" data-i18n="nav.form-components.main">Analizador</span>
+                                  <span class="pcoded-mcaret"></span>
+                              </a>
+                            </li>
+
+
+                            <li>
+                              <a href="{{url_for('registros')}}" class="waves-effect waves-dark">
+                                  <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                  <span class="pcoded-mtext" data-i18n="nav.form-components.main">Resultados</span>
+                                  <span class="pcoded-mcaret"></span>
+                              </a>
+                            </li>
+                       
+                        </ul>
+        
+                        
+                      </div>
+                  </nav>
+                  <div class="pcoded-content">
+              
+                      <!-- Page-header start -->
+                     <div class="page-header">
+                       <div class="page-block">
+                           <div class="row align-items-center">
+                               <div class="col-md-8">
+                                   <div class="page-header-title">
+                                       <h4 class="m-b-10">CALIBRACIÓN</h4>
+                                       <p class="m-b-0">Corrección de colores del ambiente</p>
+                                   </div>
+                               </div>
+                               <div class="col-md-4">
+                                   <ul class="breadcrumb-title">
+                                       <li class="breadcrumb-item">
+                                           <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                       </li>
+                                       <li class="breadcrumb-item"><a href="#!">Calibración</a>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                     <!-- Page-header end -->
+                      
+                 
+
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <!-- task, page, download counter  start -->
+                                            
+                                            <!--  sale analytics start -->
+                                            <div class="col">
+                                                <div class="card user-card">
+                                                        <div class="card-header">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <h5 >IMAGEN ACTUAL</h5>
+                                                                </div>
+                                                                <div class="col-md-6" >
+                                                                   
+                                                                    <h5 >
+                                                                        <select name="select" class="tipoVideo btn-block" >
+                                                                            <option value="procesada">Imagen Procesada</option>  
+                                                                            <option value="mascara">Imagen Máscara</option>
+                                                                            <option value="pseudo">Imagen PseudoColor</option>
+                                                                            <option value="normal">Imagen Normal</option>
+                                                                        </select>
+                                                                    </h5>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <img src="{{ url_for('video_feed') }}" >
+
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col">
+                                                <div class="card user-card" id="contenedorBotones">
+
+                                                    <div class="card-body  text-center">
+
+                                                        <h3>Huevo Normal</h3>
+                                                        <form id="hsv-form" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-h">Lower H: <span id="lower-h-val">30</span></label>
+                                                                        <input type="range" id="lower-h" name="lower_h" min="0" max="179" value="30" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-s">Lower S: <span id="lower-s-val">16</span></label>
+                                                                        <input type="range" id="lower-s" name="lower_s" min="0" max="255" value="16" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-v">Lower V: <span id="lower-v-val">103</span></label>
+                                                                        <input type="range" id="lower-v" name="lower_v" min="0" max="255" value="103" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-h">Upper H: <span id="upper-h-val">94</span></label>
+                                                                        <input type="range" id="upper-h" name="upper_h" min="0" max="179" value="94" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-s">Upper S: <span id="upper-s-val">255</span></label>
+                                                                        <input type="range" id="upper-s" name="upper_s" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-v">Upper V: <span id="upper-v-val">255</span></label>
+                                                                        <input type="range" id="upper-v" name="upper_v" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
+                                                        </form>
+
+                                                        
+
+                                                       
+
+                                                     
+
+
+                                                    </div>
+        
+                                                </div>
+
+
+
+                                                <div class="card user-card" id="contenedorBotones">
+
+                                                    <div class="card-body  text-center">
+
+                                                 
+                                                        <h3>Huevo Blanco</h3>
+                                                        <form id="hsv-dedos-form" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-h-dedos">Lower H: <span id="lower-h-dedos-val">40</span></label>
+                                                                        <input type="range" id="lower-h-dedos" name="lower_h_dedos" min="0" max="179" value="40" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-s-dedos">Lower S: <span id="lower-s-dedos-val">16</span></label>
+                                                                        <input type="range" id="lower-s-dedos" name="lower_s_dedos" min="0" max="255" value="16" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-v-dedos">Lower V: <span id="lower-v-dedos-val">87</span></label>
+                                                                        <input type="range" id="lower-v-dedos" name="lower_v_dedos" min="0" max="255" value="87" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-h-dedos">Upper H: <span id="upper-h-dedos-val">100</span></label>
+                                                                        <input type="range" id="upper-h-dedos" name="upper_h_dedos" min="0" max="179" value="100" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-s-dedos">Upper S: <span id="upper-s-dedos-val">255</span></label>
+                                                                        <input type="range" id="upper-s-dedos" name="upper_s_dedos" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-v-dedos">Upper V: <span id="upper-v-dedos-val">255</span></label>
+                                                                        <input type="range" id="upper-v-dedos" name="upper_v_dedos" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          <!-- <button type="submit" class="btn btn-primary">Submit</button>--> 
+                                                        </form>
+
+                                                    </div>
+        
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col text-center">
+                                                <div class="card user-card" id="contenedorBotones">
+
+                                                    <div class="card-body  text-center">
+
+                                                        <h3>Embrión</h3>
+                                                        <form id="hsv-form" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-h">Lower H: <span id="lower-h-val">30</span></label>
+                                                                        <input type="range" id="lower-h" name="lower_h" min="0" max="179" value="30" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-s">Lower S: <span id="lower-s-val">16</span></label>
+                                                                        <input type="range" id="lower-s" name="lower_s" min="0" max="255" value="16" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="lower-v">Lower V: <span id="lower-v-val">103</span></label>
+                                                                        <input type="range" id="lower-v" name="lower_v" min="0" max="255" value="103" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-h">Upper H: <span id="upper-h-val">94</span></label>
+                                                                        <input type="range" id="upper-h" name="upper_h" min="0" max="179" value="94" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-s">Upper S: <span id="upper-s-val">255</span></label>
+                                                                        <input type="range" id="upper-s" name="upper_s" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                    <div class="slider-container">
+                                                                        <label for="upper-v">Upper V: <span id="upper-v-val">255</span></label>
+                                                                        <input type="range" id="upper-v" name="upper_v" min="0" max="255" value="255" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          <!--  <button type="submit" class="btn btn-primary">Submit</button>-->
+                                                        </form>
+
+                                                      
+
+
+                                                    </div>
+        
+                                                </div>
+
+
+                                                <div class="card user-card" id="contenedorBotones">
+
+                                                    <div class="card-body  text-center">
+
+                                                        <h3>Controles</h3>
+                                                      
+
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="btn waves-effect waves-light btn-primary btn-round" id="btnDefault">
+                                                                <i class="fa fa-repeat"></i> Reestablecer Valores
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <button type="button " class="btn waves-effect waves-light btn-success btn-round" id="btnSaveValues">
+                                                                <i class="fa fa-check"></i> Guardar Valores
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="row col-md-12">
+
+                                                        
+
+
+                                                            <div class="col-md-12">
+
+                                                                <button type="button" class="btn btn-info btn-round" id="btnDefault">
+                                                                    <i class="fa fa-repeat"></i> Lámpara
+                                                                </button>
+
+                                                            </div>
+
+                                                        </div>
+
+                              
+
+
+                                                     
+
+                                                      
+                                                     
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+
+
+                                          
+
+                                            <!--  project and team member end -->
+                                        </div>
+
+
+                                    </div>
+                                    <!-- Page-body end -->
+                                </div>
+                                <div id="styleSelector"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+       $(document).ready(function () {
+  
+    console.log("inicio de mensajes socket")
+
+
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('update', function (data) {
+        if (data) {
+
+            console.log(data.message)
+
+
+        }
+    });
+
+
+});
+    </script>
+
+    
+    {% if variables %}
+        {%  for variable in variables %}
+    
+            <script>
+                $(document).ready(function () {
+
+                    function defaultValue(inputId, labelId) {
+
+                        $('#' + labelId).text($('#' + inputId).val());
+
+                        $.ajax({
+                            url: '/set_controles',
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "control": inputId, "valor": $('#' + inputId).val() }),
+                            success: function (response) {
+                                // Puedes manejar la respuesta si es necesario
+                                console.log(response.message);
+                            }
+                        });
+
+                    }
+
+
+                    $('#lower-h').val("{{variable[1]}}");
+                    $('#lower-s').val("{{variable[2]}}");
+                    $('#lower-v').val("{{variable[3]}}");
+
+                    $('#upper-h').val("{{variable[4]}}");
+                    $('#upper-s').val("{{variable[5]}}");
+                    $('#upper-v').val("{{variable[6]}}");
+
+                    $('#lower-h-dedos').val("{{variable[7]}}");
+                    $('#lower-s-dedos').val("{{variable[8]}}");
+                    $('#lower-v-dedos').val("{{variable[9]}}");
+
+                    $('#upper-h-dedos').val("{{variable[10]}}");
+                    $('#upper-s-dedos').val("{{variable[11]}}");
+                    $('#upper-v-dedos').val("{{variable[12]}}");
+
+                    defaultValue("lower-h", 'lower-h-val');
+                    defaultValue("lower-s", 'lower-s-val');
+                    defaultValue("lower-v", 'lower-v-val');
+                    defaultValue("upper-h", 'upper-h-val');
+                    defaultValue("upper-s", 'upper-s-val');
+                    defaultValue("upper-v", 'upper-v-val');
+
+                    defaultValue("lower-h-dedos", 'lower-h-dedos-val');
+                    defaultValue("lower-s-dedos", 'lower-s-dedos-val');
+                    defaultValue("lower-v-dedos", 'lower-v-dedos-val');
+                    defaultValue("upper-h-dedos", 'upper-h-dedos-val');
+                    defaultValue("upper-s-dedos", 'upper-s-dedos-val');
+                    defaultValue("upper-v-dedos", 'upper-v-dedos-val');
+
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+    <div class="ie-warning">
+        <h1>Warning!!</h1>
+        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+        <div class="iew-container">
+            <ul class="iew-download">
+                <li>
+                    <a href="http://www.google.com/chrome/">
+                        <img src="assets/images/browser/chrome.png" alt="Chrome">
+                        <div>Chrome</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.mozilla.org/en-US/firefox/new/">
+                        <img src="assets/images/browser/firefox.png" alt="Firefox">
+                        <div>Firefox</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.opera.com">
+                        <img src="assets/images/browser/opera.png" alt="Opera">
+                        <div>Opera</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.apple.com/safari/">
+                        <img src="assets/images/browser/safari.png" alt="Safari">
+                        <div>Safari</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                        <img src="assets/images/browser/ie.png" alt="">
+                        <div>IE (9 & above)</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>Sorry for the inconvenience!</p>
+    </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+    
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="assets/js/jquery/jquery.min.js" ></script>
+    <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js" ></script>
+    <script type="text/javascript" src="assets/js/popper.js/popper.min.js" ></script>
+    <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/pages/widget/excanvas.js" ></script>
+    <!-- waves js -->
+    <script src="assets/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
+    <!-- slimscroll js -->
+    <script type="text/javascript" src="assets/js/SmoothScroll.js"></script>
+    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js" ></script>
+    <!-- Chart js -->
+    <script type="text/javascript" src="assets/js/chart.js/Chart.js"></script>
+    <!-- amchart js -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="assets/pages/widget/amchart/gauge.js"></script>
+    <script src="assets/pages/widget/amchart/serial.js"></script>
+    <script src="assets/pages/widget/amchart/light.js"></script>
+    <script src="assets/pages/widget/amchart/pie.min.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <!-- menu js -->
+    <script src="assets/js/pcoded.min.js"></script>
+    <script src="assets/js/vertical-layout.min.js"></script>
+    <!-- custom js -->
+   <!--  <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js')}}"></script>-->
+    <script type="text/javascript" src="assets/js/script.js" ></script>
+
+     <!-- ANALIZADOR -->    
+     <script src="assets/js/analizador.js"></script>
+</body>
+
+</html>

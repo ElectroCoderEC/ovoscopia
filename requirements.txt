@@ -1,0 +1,10 @@
+mysql-connector-python==9.0.0
+numpy==1.26.4
+opencv_python==4.10.0.82
+pygame==2.5.2
+flask==3.0.3
+reportlab==4.2.2
+Werkzeug==3.0.3
+datetime==5.5
+matplotlib==3.9.0
+Flask-SocketIO==5.3.6
